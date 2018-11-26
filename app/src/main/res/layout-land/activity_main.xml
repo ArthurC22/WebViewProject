@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.enssat.lnfl.enrichedvideo.MainActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/VerticalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7"
+
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/HorizontalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/VerticalGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline" />
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/HorizontalGuideline"
+        app:layout_constraintStart_toEndOf="@+id/VerticalGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HorizontalGuideline">
+
+
+        <Button
+            android:id="@+id/btnIntro"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Intro"
+            android:background="#C0C0C0"/>
+
+        <Button
+            android:id="@+id/btnTitle"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Title"
+            android:background="#C0C0C0"/>
+
+        <Button
+            android:id="@+id/btnButterflies"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Butterflie"
+            android:background="#C0C0C0"/>
+
+        <Button
+            android:id="@+id/btnAssault"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Assault"
+            android:background="#C0C0C0" />
+
+        <Button
+            android:id="@+id/btnPayback"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Payback"
+            android:background="#C0C0C0"/>
+
+        <Button
+            android:id="@+id/btnCast"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Cast"
+            android:background="#C0C0C0"/>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
