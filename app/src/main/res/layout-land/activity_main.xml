@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.enssat.lnfl.enrichedvideo.MainActivity">
+    tools:context="fr.enssat.ac.webviewproject.MainActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/VerticalGuideline"
@@ -51,53 +51,53 @@
         app:layout_constraintTop_toBottomOf="@+id/HorizontalGuideline">
 
 
-        <Button
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/btnIntro"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Intro"
-            android:background="#C0C0C0"/>
+            android:text="@string/intro_button"
+            android:background="@drawable/roundedbutton"/>
 
-        <Button
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/btnTitle"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Title"
-            android:background="#C0C0C0"/>
+            android:text="@string/title_button"
+            android:background="@drawable/roundedbutton"/>
 
-        <Button
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/btnButterflies"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Butterflie"
-            android:background="#C0C0C0"/>
+            android:text="@string/butterfly_button"
+            android:background="@drawable/roundedbutton"/>
 
-        <Button
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/btnAssault"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Assault"
-            android:background="#C0C0C0" />
+            android:text="@string/assault_button"
+            android:background="@drawable/roundedbutton"/>
 
-        <Button
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/btnPayback"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Payback"
-            android:background="#C0C0C0"/>
+            android:text="@string/payback_button"
+            android:background="@drawable/roundedbutton"/>
 
-        <Button
+        <Button style="?android:attr/buttonBarStyle"
             android:id="@+id/btnCast"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="Cast"
-            android:background="#C0C0C0"/>
+            android:text="@string/cast_button"
+            android:background="@drawable/roundedbutton"/>
 
     </LinearLayout>
 

@@ -1,26 +1,28 @@
 package fr.enssat.ac.webviewproject;
 
 /**
- * Created by Omar et Thibault on 20/12/2017.
+ * Author : Arthur Chevallier
+ * Date : 20/11/2018
+ * Description : Java Class to manage link between chapters, video and wikipedia webpage
  */
 
-public class Metadata {
-    private int sPosition;
+public class Data {
+    private int Position;
     private String context;
     private String url;
 
-    public Metadata(int _sPosition,String _context, String _url){
-        if(!_url.contains("http")){
-            this.url = "https://en.wikipedia.org/wiki/Big_Buck_Bunny#" + _url;
+    public Data(int Position, String context, String url){
+        if(!url.contains("http")){
+            this.url = "https://fr.wikipedia.org/wiki/Big_Buck_Bunny" + url;
         } else {
-            this.url = _url;
+            this.url = url;
         }
-        this.context = _context;
-        this.sPosition = _sPosition;
+        this.context = context;
+        this.Position = Position;
     }
 
-    public int getSPosition() {
-        return sPosition;
+    public int getPosition() {
+        return Position;
     }
 
     public String getContext() {

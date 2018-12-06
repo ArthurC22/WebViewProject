@@ -1,23 +1,18 @@
-package fr.enssat.lnfl.enrichedvideo;
+package fr.enssat.ac.webviewproject;
 
 import android.app.ProgressDialog;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
-
-
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private VideoView myVideoView;
     private WebView webview;
 
-    private int position = 0;
+    private int initialPosition = 0;
     private ProgressDialog progressDialog;
     private MediaController mediaControls;
 
@@ -35,42 +30,39 @@ public class MainActivity extends AppCompatActivity {
     private Thread mThread;
 
     private String currentWebViewTitle = "Intro";
-    private String Url = "https://en.wikipedia.org/wiki/Big_Buck_Bunny";
-    private MetadataManager metadataManager;
+    private DataManager dataManager;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Get the layout from video_main.xml
-        setContentView(R.layout.activity_main);
+        String wikiUrl = "https://fr.wikipedia.org/wiki/Big_Buck_Bunny";
+        String videoUrl = "https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4";
 
-        //Remove the notification bar (full screen)
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // Get the layout from activity_main.xml
+        setContentView(fr.enssat.ac.webviewproject.R.layout.activity_main);
 
-        //MetadataManager
-        metadataManager = new MetadataManager();
-        metadataManager.add(0,"Intro","");
-        metadataManager.add(28,"Title","Production_history");
-        metadataManager.add(2*60+40,"Assault","Release");
-        metadataManager.add(4*60+50,"Payback","Plot");
-        metadataManager.add(60+15,"Butterflies","Characters");
-        metadataManager.add(8*60+15,"Cast","See_also");
+        //DataManager
+        dataManager = new DataManager();
+        dataManager.add(0,"Intro","");
+        dataManager.add(28,"Title","#Synopsis");
+        dataManager.add(60+15,"Butterflies","#Réalisation");
+        dataManager.add(2*60+40,"Assault","#Fiche_technique");
+        dataManager.add(4*60+50,"Payback","#Distribution");
+        dataManager.add(8*60+15,"Cast","#Annexes");
 
-
-        
         //Video
         if (mediaControls == null) {
             mediaControls = new MediaController(MainActivity.this);
         }
 
         // Find your VideoView in your video_main.xml layout
-        myVideoView = findViewById(R.id.video_view);
+        myVideoView = findViewById(fr.enssat.ac.webviewproject.R.id.video_view);
 
         // Create a progressbar
         progressDialog = new ProgressDialog(MainActivity.this);
         // Set progressbar title
-        progressDialog.setTitle("JavaCodeGeeks Android Video View Example");
+        progressDialog.setTitle("Wait during video is loading");
         // Set progressbar message
         progressDialog.setMessage("Loading...");
 
@@ -80,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             myVideoView.setMediaController(mediaControls);
-            myVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.bigbuckbunny));
+            myVideoView.setVideoPath(videoUrl);
 
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
@@ -92,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
             // Close the progress bar and play the video
             public void onPrepared(MediaPlayer mp) {
                 progressDialog.dismiss();
-                myVideoView.seekTo(position);
-                if (position == 0) {
+                myVideoView.seekTo(initialPosition);
+                if (initialPosition == 0) {
                     myVideoView.start();
                 } else {
                     myVideoView.pause();
@@ -101,21 +93,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         //WebView
-        webview = findViewById(R.id.web_view);
+        webview = findViewById(fr.enssat.ac.webviewproject.R.id.web_view);
         webview.setWebViewClient(new WebViewClient());
-        webview.loadUrl("https://en.wikipedia.org/wiki/Big_Buck_Bunny");
-
+        webview.loadUrl(wikiUrl);
 
         //Button
-        Button btnIntro = findViewById(R.id.btnIntro);
-        Button btnTitle = findViewById(R.id.btnTitle);
-        Button btnAssault = findViewById(R.id.btnAssault);
-        Button btnButterflies = findViewById(R.id.btnButterflies);
-        Button btnPayback = findViewById(R.id.btnPayback);
-        Button btnCast = findViewById(R.id.btnCast);
+        Button btnIntro = findViewById(fr.enssat.ac.webviewproject.R.id.btnIntro);
+        Button btnTitle = findViewById(fr.enssat.ac.webviewproject.R.id.btnTitle);
+        Button btnAssault = findViewById(fr.enssat.ac.webviewproject.R.id.btnAssault);
+        Button btnButterflies = findViewById(fr.enssat.ac.webviewproject.R.id.btnButterflies);
+        Button btnPayback = findViewById(fr.enssat.ac.webviewproject.R.id.btnPayback);
+        Button btnCast = findViewById(fr.enssat.ac.webviewproject.R.id.btnCast);
 
         btnIntro.setTag("Intro");
         btnTitle.setTag("Title");
@@ -130,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         btnButterflies.setOnClickListener(myOnlyHandler);
         btnPayback.setOnClickListener(myOnlyHandler);
         btnCast.setOnClickListener(myOnlyHandler);
-
 
         //Handler
         mHandler = new Handler() {
@@ -164,24 +152,22 @@ public class MainActivity extends AppCompatActivity {
                         if(myVideoView.isPlaying()) {
                             Log.d(TAG, "Running, current position : " + myVideoView.getCurrentPosition());
                             Log.d(TAG, "currentWebViewTitle : " + currentWebViewTitle);
-                            Log.d(TAG, "metadataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000)) : " + metadataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000));
+                            Log.d(TAG, "dataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000)) : " + dataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000));
 
-                            if(!currentWebViewTitle.equals(metadataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000))){
+                            if(!currentWebViewTitle.equals(dataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000))){
 
-                                currentWebViewTitle = metadataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000);
+                                currentWebViewTitle = dataManager.getContextByPosition(myVideoView.getCurrentPosition()/1000);
                                 // Envoyer le message au Handler (la méthode handler.obtainMessage est plus efficace
                                 // que créer un message à partir de rien, optimisation du pool de message du Handler)
                                 //Instanciation du message (la bonne méthode):
                                 myMessage=mHandler.obtainMessage();
                                 //Ajouter des données à transmettre au Handler via le Bundle
-                                messageBundle.putString(PROGRESS_WEB_VIEW, metadataManager.getUrlByPosition(myVideoView.getCurrentPosition()/1000));
+                                messageBundle.putString(PROGRESS_WEB_VIEW, dataManager.getUrlByPosition(myVideoView.getCurrentPosition()/1000));
                                 //Ajouter le Bundle au message
                                 myMessage.setData(messageBundle);
                                 //Envoyer le message
                                 mHandler.sendMessage(myMessage);
                             }
-
-
                         }
                         //Let other threads to work
                         Thread.sleep(1000);
@@ -199,10 +185,10 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             //Just a test
             Log.d(TAG,"Button on clicked, button tag: "+v.getTag());
-            Log.d(TAG,"Button on clicked, video goes to : "+ metadataManager.getPositionByContext(v.getTag().toString()));
+            Log.d(TAG,"Button on clicked, video goes to : "+ dataManager.getPositionByContext(v.getTag().toString()));
             Log.d(TAG,"Button on clicked, video currentDuration : "+myVideoView.getCurrentPosition());
             try{
-                myVideoView.seekTo(metadataManager.getPositionByContext(v.getTag().toString())*1000);
+                myVideoView.seekTo(dataManager.getPositionByContext(v.getTag().toString())*1000);
             } catch (Exception e){
                 Log.d(TAG, "Exception " + e);
             }
@@ -210,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    @Override
+   @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         //Interrupt the current thread (or else, multiple messages are going to be sent to the handler)
@@ -224,8 +210,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        position = savedInstanceState.getInt("Position");
-        myVideoView.seekTo(position);
+        initialPosition = savedInstanceState.getInt("Position");
+        myVideoView.seekTo(initialPosition);
         myVideoView.isPlaying();
     }
 }
