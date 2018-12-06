@@ -1,4 +1,4 @@
-package fr.enssat.lnfl.enrichedvideo;
+package fr.enssat.ac.webviewproject;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,9 @@ import java.util.List;
  */
 
 public class MetadataManager {
+
     private List<Metadata> lMetadata;
+
     public MetadataManager(){
         this.lMetadata = new LinkedList<>();
     }

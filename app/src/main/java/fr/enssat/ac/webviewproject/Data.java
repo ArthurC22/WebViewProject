@@ -1,4 +1,4 @@
-package fr.enssat.lnfl.enrichedvideo;
+package fr.enssat.ac.webviewproject;
 
 /**
  * Created by Omar et Thibault on 20/12/2017.
