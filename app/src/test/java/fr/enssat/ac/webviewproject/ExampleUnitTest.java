@@ -1,4 +1,4 @@
-package fr.enssat.lnfl.enrichedvideo;
+package fr.enssat.ac.webviewproject;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package fr.enssat.lnfl.enrichedvideo;
+package fr.enssat.ac.webviewproject;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("fr.enssat.lnfl.enrichedvideo", appContext.getPackageName());
+        assertEquals("fr.enssat.ac.webviewproject", appContext.getPackageName());
     }
 }

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">EnrichedVideo</string>
+    <string name="app_name">WebView</string>
+    <string name="intro_button">Debut</string>
+    <string name="title_button">Titre</string>
+    <string name="butterfly_button">Papillons</string>
+    <string name="assault_button">Attaque</string>
+    <string name="payback_button">Revanche</string>
+    <string name="cast_button">Casting</string>
 </resources>

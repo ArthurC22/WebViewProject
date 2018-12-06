@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.enssat.lnfl.enrichedvideo.MainActivity">
+    tools:context="fr.enssat.ac.webviewproject.MainActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/HorizontalGuideline"
@@ -24,9 +24,10 @@
 
     <WebView
         android:id="@+id/web_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="383dp"
+        android:layout_height="219dp"
         android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,64 +43,100 @@
 
     <GridLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:padding="5dp"
+        android:layout_width="379dp"
+        android:layout_height="88dp"
+        android:alignmentMode="alignMargins"
         android:columnCount="3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HorizontalGuideline">
+        app:layout_constraintTop_toBottomOf="@+id/web_view">
 
 
         <Button
             android:id="@+id/btnIntro"
-            android:tag="Intro"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Intro"
-            android:background="#C0C0C0"/>
+            android:layout_height="36dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="start"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/roundedbutton"
+            android:tag="Intro"
+            android:text="@string/intro_button" />
 
         <Button
             android:id="@+id/btnTitle"
-            android:tag="Title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title"
-            android:background="#C0C0C0"/>
+            android:layout_height="36dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/roundedbutton"
+            android:tag="Title"
+            android:text="@string/title_button" />
 
         <Button
             android:id="@+id/btnButterflies"
-            android:tag="Butterflie"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Butterflie"
-            android:background="#C0C0C0"/>
+            android:layout_height="36dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="end"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/roundedbutton"
+            android:tag="Butterflie"
+            android:text="@string/butterfly_button" />
 
         <Button
             android:id="@+id/btnAssault"
-            android:tag="Assault"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Assault"
-            android:background="#C0C0C0"/>
+            android:layout_height="36dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="start"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/roundedbutton"
+            android:tag="Assault"
+            android:text="@string/assault_button" />
 
         <Button
             android:id="@+id/btnPayback"
-            android:tag="Payback"
-            android:background="#C0C0C0"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Payback" />
+            android:layout_height="36dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/roundedbutton"
+            android:tag="Payback"
+            android:text="@string/payback_button" />
 
         <Button
             android:id="@+id/btnCast"
-            android:tag="Cast"
-            android:background="#C0C0C0"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cast" />
+            android:layout_height="36dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="end"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/roundedbutton"
+            android:tag="Cast"
+            android:text="@string/cast_button" />
 
     </GridLayout>
 
